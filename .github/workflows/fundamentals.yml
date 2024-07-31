@@ -6,9 +6,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Use React Application
-        run: cd react-app # Change to the React application directory
       - name: Install NodeJS
         uses: actions/setup-node@v3
         with:
           node-version: '18'
+      - name: Install dependencies
+        run: npm ci --prefix react-app
+      - name: Run tests
+        run: npm test --prefix react-app
