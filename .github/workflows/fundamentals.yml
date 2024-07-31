@@ -5,3 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Use React Application
+        run: cd react-app # Change to the React application directory
