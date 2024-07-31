@@ -8,3 +8,7 @@
 
 **Events (Workflow Triggers)**<br />
 All possible event can be found in the [official docs](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows).
+
+## Actions
+
+![actions](./images/actions.excalidraw.png)
