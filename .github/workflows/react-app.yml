@@ -16,6 +16,7 @@ jobs:
         run: npm test --prefix react-app
   deploy:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
