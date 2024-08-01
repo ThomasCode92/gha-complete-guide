@@ -3,6 +3,13 @@ on:
   pull_request:
     types: [opened, edited, closed]
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'feature/**'
+    paths:
+      - 'react-app/**'
+      - '.github/workflows/react-app.yml'
 jobs:
   test:
     runs-on: ubuntu-latest
