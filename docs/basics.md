@@ -12,3 +12,7 @@ All possible event can be found in the [official docs](https://docs.github.com/e
 ## Actions
 
 ![actions](./images/actions.excalidraw.png)
+
+## Job Runners
+
+![job runners](./images/job-runners.excalidraw.png)
