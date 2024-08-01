@@ -9,3 +9,9 @@
 ## Activity Types & Filters
 
 ![activity types and filters](./images/activity-types-filters.excalidraw.png)
+
+## Quick Notes about Events
+
+### Fork Pull Request Workflows
+
+By default, Pull Requests based on Forks do NOT trigger a workflow<br />Reason: Everyone can fork & open pull requests. Malicious workflow runs & excess cost could be caused. This is why First-time contributors must be approved manually.
