@@ -1,5 +1,8 @@
 name: GitHub Actions for React App
-on: [push, workflow_dispatch]
+on:
+  pull_request:
+    types: [opened, edited, closed]
+  workflow_dispatch:
 jobs:
   test:
     runs-on: ubuntu-latest
