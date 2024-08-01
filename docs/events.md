@@ -15,3 +15,8 @@
 ### Fork Pull Request Workflows
 
 By default, Pull Requests based on Forks do NOT trigger a workflow<br />Reason: Everyone can fork & open pull requests. Malicious workflow runs & excess cost could be caused. This is why First-time contributors must be approved manually.
+
+### Cancelling & Skipping
+
+**Cancelling:** By default, workflows get cancelled if a Job fails. A Job fails if at least one Step fails. A workflow can be cancelled manually.<br/>
+**Skipping:** By default, all matching events start a workflow, but there are exceptions for "_push_" and "_pull_request_". Skip can be done with a proper commit message.
