@@ -6,6 +6,8 @@
 
 ![events](./images/events.excalidraw.png)
 
+All possible event can be found in the [official docs](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows).
+
 ## Activity Types & Filters
 
 ![activity types and filters](./images/activity-types-filters.excalidraw.png)
