@@ -5,3 +5,7 @@
 ## Available Events
 
 ![events](./images/events.excalidraw.png)
+
+## Activity Types & Filters
+
+![activity types and filters](./images/activity-types-filters.excalidraw.png)
