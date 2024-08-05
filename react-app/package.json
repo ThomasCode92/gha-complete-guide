@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "lint": "eslint --ext .jsx --fix src",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run"
@@ -20,8 +21,11 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.1",
+    "eslint": "^8.23.0",
+    "eslint-plugin-react": "^7.31.1",
     "jsdom": "^20.0.0",
     "vite": "^3.0.7",
+    "vite-plugin-eslint": "^1.8.1",
     "vitest": "^0.22.1"
   }
 }
