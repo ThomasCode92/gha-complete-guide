@@ -9,3 +9,7 @@
 ## Understanding Job Outputs
 
 ![job outputs](./images/job-outputs.excalidraw.png)
+
+## Caching Dependencies
+
+![dependency caching](./images/dependency-caching.excalidraw.png)
