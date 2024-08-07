@@ -4,13 +4,18 @@ on:
   push:
     branches:
       - main
-      - environment-variables-and-secrets
     paths:
       - 'node-app/**'
       - '.github/workflows/node-app.yml'
+env:
+  MONGODB_DB_NAME: 'gha-demo'
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      MONGODB_CLUSTER_ADDRESS:
+      MONGODB_USERNAME:
+      MONGODB_PASSWORD:
     steps:
       - name: Get Code
         uses: actions/checkout@v3
