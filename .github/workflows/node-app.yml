@@ -8,14 +8,15 @@ on:
       - 'node-app/**'
       - '.github/workflows/node-app.yml'
 env:
-  MONGODB_DB_NAME: 'gha-demo'
+  MONGODB_DB_NAME: gha-demo
 jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      MONGODB_CLUSTER_ADDRESS:
-      MONGODB_USERNAME:
-      MONGODB_PASSWORD:
+      MONGODB_CLUSTER_ADDRESS: some_address
+      MONGODB_USERNAME: some_username
+      MONGODB_PASSWORD: some_password
+      PORT: 8080
     steps:
       - name: Get Code
         uses: actions/checkout@v3
@@ -27,15 +28,17 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefix node-app
       - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:XYZ
+        run: npm start & npx wait-on http://127.0.0.1:$PORT
       - name: Run tests
         run: npm test --prefix node-app
       - name: Output information
-        run: echo "..."
+        run: |
+          echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
         run: |
-          echo "..."
+          echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
+          echo "MONGODB_DB_NAME: ${{ env.MONGODB_DB_NAME }}"
