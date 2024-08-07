@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - environment-variables-and-secrets
     paths:
       - 'node-app/**'
       - '.github/workflows/node-app.yml'
@@ -13,9 +14,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      MONGODB_CLUSTER_ADDRESS: some_address
-      MONGODB_USERNAME: some_username
-      MONGODB_PASSWORD: some_password
+      MONGODB_CLUSTER_ADDRESS: ${{ secrets.MONGODB_CLUSTER_ADDRESS }}
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       PORT: 8080
     steps:
       - name: Get Code
@@ -28,17 +29,17 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefix node-app
       - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:$PORT
+        run: npm start --prefix node-app & npx wait-on http://127.0.0.1:$PORT
       - name: Run tests
         run: npm test --prefix node-app
       - name: Output information
         run: |
           echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
+          echo "MONGODB_DB_NAME: ${{ env.MONGODB_DB_NAME }}"
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
         run: |
-          echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
           echo "MONGODB_DB_NAME: ${{ env.MONGODB_DB_NAME }}"
