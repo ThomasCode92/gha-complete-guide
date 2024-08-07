@@ -7,3 +7,7 @@
 ![env variables](./images/env-variables.excalidraw.png)
 
 Certain environment variable values, such as a database access password, should never be exposed. To safeguard this information, use Secrets in conjunction with environment variables.
+
+## Repository Environments
+
+![gh environments](./images/gh-environments.excalidraw.png)
