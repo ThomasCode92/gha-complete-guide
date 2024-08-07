@@ -3,7 +3,8 @@
   "gitlens.codeLens.recentChange.enabled": false,
   "gitlens.codeLens.authors.enabled": false,
   "material-icon-theme.folders.associations": {
-    "react-app": "client"
+    "react-app": "client",
+    "node-app": "server"
   },
 
   // IDE Config

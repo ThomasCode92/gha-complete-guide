@@ -1,0 +1,45 @@
+name: GitHub Actions for Node App
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'node-app/**'
+      - '.github/workflows/node-app.yml'
+env:
+  MONGODB_DB_NAME: gha-demo
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    environment: testing
+    env:
+      MONGODB_CLUSTER_ADDRESS: ${{ secrets.MONGODB_CLUSTER_ADDRESS }}
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+      PORT: 8080
+    steps:
+      - name: Get Code
+        uses: actions/checkout@v3
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: npm-deps-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci --prefix node-app
+      - name: Run server
+        run: npm start --prefix node-app & npx wait-on http://127.0.0.1:$PORT
+      - name: Run tests
+        run: npm test --prefix node-app
+      - name: Output information
+        run: |
+          echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
+          echo "MONGODB_DB_NAME: ${{ env.MONGODB_DB_NAME }}"
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output information
+        run: |
+          echo "MONGODB_DB_NAME: ${{ env.MONGODB_DB_NAME }}"
