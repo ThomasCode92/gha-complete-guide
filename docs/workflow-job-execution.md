@@ -10,3 +10,10 @@
 Conditions need to be evaluated via _Expressions_.
 
 ![execution flow](./images/execution-flow.excalidraw.png)
+
+### Special Conditional Function
+
+- **failure():** Returns true when any previous Step or Job failed
+- **success():** Returns true when none of the previous steps have failed
+- **always():** Causes the step to always execute, even when cancelled
+- **cancelled():** Returns true if the work ow has been cancelled
