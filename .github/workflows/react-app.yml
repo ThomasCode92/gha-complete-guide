@@ -42,21 +42,29 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --prefix react-app
       - name: Test code
-        continue-on-error: true
         id: run-tests
         run: npm run test --prefix react-app
       - name: Upload test report
-        # if: failure() && steps.run-tests.outcome == 'failure'
+        if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
           path: react-app/test.json
   build:
     needs: test
-    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      matrix:
+        node-version: [12, 14, 18]
+        operating-system: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: Cache dependencies
         id: cache
         uses: actions/cache@v3
