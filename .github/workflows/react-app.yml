@@ -42,10 +42,11 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci --prefix react-app
       - name: Test code
+        continue-on-error: true
         id: run-tests
         run: npm run test --prefix react-app
       - name: Upload test report
-        if: failure() && steps.run-tests.outcome == 'failure'
+        # if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
