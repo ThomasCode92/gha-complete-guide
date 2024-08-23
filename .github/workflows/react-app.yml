@@ -55,8 +55,14 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        node-version: [12, 14, 18]
+        node-version: [12, 14, 16]
         operating-system: [ubuntu-latest, windows-latest]
+        include:
+          - node-version: 18
+            operating-system: ubuntu-latest
+        exclude:
+          - node-version: 12
+            operating-system: windows-latest
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Checkout code
@@ -78,6 +84,7 @@ jobs:
         id: build-website
         run: npm run build --prefix react-app
       - name: Upload artifacts
+        if: success() && ${{ matrix.operating-system }} == 'ubuntu-latest' && ${{ matrix.node-version }} == 18
         uses: actions/upload-artifact@v3
         with:
           name: dist-files
