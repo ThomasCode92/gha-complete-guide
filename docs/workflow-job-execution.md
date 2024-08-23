@@ -17,3 +17,7 @@ Conditions need to be evaluated via _Expressions_.
 - **success():** Returns true when none of the previous steps have failed
 - **always():** Causes the step to always execute, even when cancelled
 - **cancelled():** Returns true if the work ow has been cancelled
+
+## Reusable Workflows
+
+![reusable workflows](./images/reusable-workflow.excalidraw.png)
