@@ -94,6 +94,8 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       artifact-name: dist-files
+    # secrets:
+    #   some-secret: ${{ secrets.SOME_SECRET }}
   report:
     runs-on: ubuntu-latest
     needs: [lint, deploy]
