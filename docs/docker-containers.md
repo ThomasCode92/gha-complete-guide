@@ -5,3 +5,7 @@
 ## What are Containers?
 
 ![containers](./images/containers.excalidraw.png)
+
+### Why use Containers
+
+![why use containers](./images/why-containers.excalidraw.png)
