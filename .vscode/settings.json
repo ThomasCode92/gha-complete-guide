@@ -4,7 +4,8 @@
   "gitlens.codeLens.authors.enabled": false,
   "material-icon-theme.folders.associations": {
     "react-app": "client",
-    "node-app": "server"
+    "node-app": "server",
+    "cached-deps": "temp"
   },
 
   // IDE Config
