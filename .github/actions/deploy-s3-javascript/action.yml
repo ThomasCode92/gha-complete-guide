@@ -2,4 +2,4 @@ name: 'Deploy to AWS S3'
 description: 'Deploy a static website to an AWS S3 bucket.'
 runs:
   using: 'node20'
-  main: 'main.js'
+  main: 'dist/index.js'
