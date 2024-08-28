@@ -4,7 +4,11 @@
   "gitlens.codeLens.authors.enabled": false,
   "material-icon-theme.folders.associations": {
     "react-app": "client",
-    "node-app": "server"
+    "node-app": "server",
+    "actions": "custom",
+    "cached-deps": "temp",
+    "deploy-s3-javascript": "javascript",
+    "deploy-s3-docker": "docker"
   },
 
   // IDE Config

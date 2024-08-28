@@ -1,0 +1,28 @@
+name: 'Get & Cache Dependencies'
+description: 'Get the dependencies (via npm) and cache them for later use.'
+inputs:
+  caching:
+    description: 'Whether to cache the dependencies or not.'
+    required: false
+    default: 'true'
+outputs:
+  used-cache:
+    description: 'Whether the cache was used or not.'
+    value: ${{ steps.install.outputs.cache }}
+runs:
+  using: 'composite'
+  steps:
+    - name: Cache dependencies
+      if: inputs.caching == 'true'
+      id: cache
+      uses: actions/cache@v3
+      with:
+        path: react-app/node_modules
+        key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+    - name: Install dependencies
+      id: install
+      if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true'
+      shell: bash
+      run: |
+        npm ci --prefix react-app
+        echo "cache='${{ inputs.caching }}'" >> $GITHUB_OUTPUT

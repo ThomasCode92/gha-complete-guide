@@ -16,15 +16,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
+      - name: Load & cache dependencies
+        id: chached-deps
+        uses: ./.github/actions/cached-deps
         with:
-          path: react-app/node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci --prefix react-app
+          caching: 'false'
+      - name: Output information
+        run: echo "Cache used? ${{ steps.chached-deps.outputs.used-cache }}"
       - name: Lint code
         run: npm run lint --prefix react-app
   test:
@@ -32,15 +30,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: react-app/node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci --prefix react-app
+      - name: Load & cache dependencies
+        uses: ./.github/actions/cached-deps
       - name: Test code
         id: run-tests
         run: npm run test --prefix react-app
@@ -71,15 +62,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Cache dependencies
-        id: cache
-        uses: actions/cache@v3
-        with:
-          path: react-app/node_modules
-          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-      - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci --prefix react-app
+      - name: Load & cache dependencies
+        uses: ./.github/actions/cached-deps
       - name: Build website
         id: build-website
         run: npm run build --prefix react-app
