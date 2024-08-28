@@ -5,7 +5,9 @@
   "material-icon-theme.folders.associations": {
     "react-app": "client",
     "node-app": "server",
-    "cached-deps": "temp"
+    "actions": "custom",
+    "cached-deps": "temp",
+    "deploy-s3-javascript": "javascript"
   },
 
   // IDE Config
