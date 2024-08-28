@@ -95,15 +95,3 @@ jobs:
         run: |
           echo "Something went wrong!"
           echo "${{ toJson(github) }}"
-  information:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-      - name: Complile s3 deploy action
-        run: |
-          npm install -g @vercel/ncc
-          cd ./.github/actions/deploy-s3-javascript
-          npm install && ncc build main.js
-      - name: Run custom action
-        uses: ./.github/actions/deploy-s3-javascript
