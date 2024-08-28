@@ -16,6 +16,9 @@ inputs:
     description: 'Whether to perform a dry run of the deployment.'
     required: false
     default: 'false'
+outputs:
+  website-url:
+    description: 'The URL of the deployed website.'
 runs:
   using: 'node20'
   main: 'dist/index.js'

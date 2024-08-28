@@ -11,11 +11,16 @@ function run() {
   const s3Uri = `s3://${bucket}`;
   const execCommand = `aws s3 sync ${distFolder} ${s3Uri} --region ${bucketRegion} --delete`;
 
+  let websiteUrl = `http://${bucket}.s3-website-${bucketRegion}.amazonaws.com`;
+
   // dry run, skip deployment
   if (dryRun === 'true') {
     core.notice('Dry run enabled, skipping deployment');
     core.notice('The following command would have been executed:');
     core.notice(execCommand);
+
+    websiteUrl = 'Dry run enabled, no website URL available';
+    core.setOutput('website-url', websiteUrl);
 
     return;
   }
@@ -26,6 +31,7 @@ function run() {
   core.notice(execCommand);
 
   exec(execCommand);
+  core.setOutput('website-url', websiteUrl);
 }
 
 run();
