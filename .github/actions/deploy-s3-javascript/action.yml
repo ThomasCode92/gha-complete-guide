@@ -12,6 +12,10 @@ inputs:
     description: 'The folder containing the static files to deploy.'
     required: false
     default: 'dist'
+  dry-run:
+    description: 'Whether to perform a dry run of the deployment.'
+    required: false
+    default: 'false'
 runs:
   using: 'node20'
   main: 'dist/index.js'
