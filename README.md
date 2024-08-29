@@ -24,3 +24,16 @@ CI/CD are methods for automating app development and deployment
 - Continuous Delivery - After integration, new app or package versions are published automatically
 
 ![ci/cd_workflow](./docs/images/cicd.excalidraw.png)
+
+## Comprehensive Guide to GitHub Actions
+
+| Topic                           | Description                             | Reference                                              |
+| ------------------------------- | --------------------------------------- | ------------------------------------------------------ |
+| GitHub Actions: Fundamentals    | Key Building Blocks & Usage             | [Documentation Link](./docs/basics.md)                 |
+| Events: A Closer Look           | Diving Deeper Into Workflow Triggers    | [Documentation Link](./docs/events.md)                 |
+| Job Data & Outputs              | It’s All About Data!                    | [Documentation Link](./docs/artifacts-outputs.md)      |
+| Environment Variables & Secrets | Hardcoding Is Not (Often) The Solution  | [Documentation Link](./docs/env-variables-secrets.md)  |
+| Controlling Execution Flow      | Beyond Step-By-Step Flows               | [Documentation Link](./docs/workflow-job-execution.md) |
+| Using Containers                | Utilizing Docker Containers             | [Documentation Link](./docs/docker-containers.md)      |
+| Building Custom Actions         | Beyond Shell Commands & The Marketplace | [Documentation Link](./docs/custom-actions.md)         |
+| Permissions & Security          | Keep Things Secure                      | [Documentation Link](./docs/security-permissions.md)   |
