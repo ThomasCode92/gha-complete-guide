@@ -6,6 +6,8 @@ on:
 jobs:
   assign-label:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
     steps:
       - name: Assign label
         if: contains(github.event.issue.title, 'bug')
