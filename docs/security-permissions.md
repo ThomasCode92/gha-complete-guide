@@ -13,3 +13,7 @@
 ### Using Actions Securely
 
 ![using actions securely](./images/using-securely.excalidraw.png)
+
+### GitHub Permissions
+
+![github permissions](./images/github-permissions.excalidraw.png)
