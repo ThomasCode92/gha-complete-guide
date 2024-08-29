@@ -17,3 +17,8 @@
 ### GitHub Permissions
 
 ![github permissions](./images/github-permissions.excalidraw.png)
+
+## Example - AWS Permission
+
+To learn how to implement _OpenID Connect_ for authentication within an GitHub workflow, the [official documentation](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services) provides detailed guidance. This resource covers the integration of _OpenID Connect_ as part of the authentication process in AWS environments.<br />
+It is important to recognize that _OpenID Connect_ is a versatile authentication protocol and is not limited to AWS. It can also be utilized with other cloud providers, such as Google Cloud and Microsoft Azure.
